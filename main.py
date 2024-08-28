@@ -48,6 +48,7 @@ def file_name_input() -> str:
     return name
 
 if __name__=="__main__":
+    print("Achtung: Allle Bilder im Ordner erhalten den gleichen Namen und das gleiche Aufnahmedatum!")
     modus:str = mode_selection()
     date:str = date_input()
     name:str = file_name_input()
