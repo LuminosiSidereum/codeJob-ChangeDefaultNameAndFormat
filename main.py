@@ -61,7 +61,54 @@ def picture_rename(date:str, name:str):
             new_name:str = name + "-" + date + "_" + str(count) + file.suffix
             file.rename(new_name)
             count = count + 1
+
+def file_name_proof(nameblocks:list[str])->None:
+    """
+    Checks if the length of the nameblocks list is less than 2.
+    Parameters:
+    - nameblocks (list[str]): A list of file names
+    Raises:
+    - ValueError: If the length of nameblocks is less than 2
+    Returns:
+    - None
+    """
+    if len(nameblocks) < 2:
+        raise ValueError("Die Dateien müssen vor dem Anpassen der Dateinamen korrekt benannt werden.")
             
+def picture_edit_date(date:str):
+    """
+    Edits the date of all pictures in the current directory.
+    Args:
+    date (str): The new date to be added to the file name.
+    """
+    count:int = 0
+    for os_file in os.listdir():
+        file: Path = Path(os_file)
+        if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
+            file_name, file_extension = file.stem, file.suffix
+            nameblocks:list[str] = file_name.split("-")
+            file_name_proof(nameblocks)
+            nameblocks[-1] = date
+            new_file_name:str = "-".join(nameblocks)+ "_" + str(count) + file_extension
+            file.rename(new_file_name)
+            count = count + 1
+
+def picture_edit_name(name:str):
+    """
+    Edits the name of all pictures in the current directory.
+    Args:
+    name (str): The new name to be added to the file name.
+    """
+    for os_file in os.listdir():
+        file: Path = Path(os_file)
+        if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
+            file_name, file_extension = file.stem, file.suffix
+            nameblocks:list[str] = file_name.split("-")
+            file_name_proof(nameblocks)
+            nameblocks[0] = name
+            new_file_name:str = "-".join(nameblocks)+file_extension
+            file.rename(new_file_name)
+
 if __name__=="__main__":
     print("Achtung: Allle Bilder im Ordner erhalten den gleichen Namen und das gleiche Aufnahmedatum!")
     modus:str = mode_selection()
@@ -75,8 +122,13 @@ if __name__=="__main__":
     if modus == "0":
         picture_rename(date, name)
     if modus == "1":
-        picture_edit_date(date)
+        try:
+            picture_edit_date(date)
+        except ValueError as e:
+            print(e)
     if modus == "2":
-        picture_edit_name(name)
-    
+        try:
+            picture_edit_name(name)
+        except ValueError as e:
+            print(e)
     input("Drücken Sie Enter zum Beenden...")
