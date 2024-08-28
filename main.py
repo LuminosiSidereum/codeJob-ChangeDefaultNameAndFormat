@@ -47,6 +47,21 @@ def file_name_input() -> str:
             print("Ungültige Eingabe!")
     return name
 
+def picture_rename(date:str, name:str):
+    """
+    Renames all pictures in the current directory.
+    Args:
+    date (str): The date to be added to the file name.
+    name (str): The name to be added to the file name.
+    """
+    count:int = 0
+    for os_file in os.listdir():
+        file: Path = Path(os_file) 
+        if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
+            new_name:str = name + "-" + date + "_" + str(count) + file.suffix
+            file.rename(new_name)
+            count = count + 1
+            
 if __name__=="__main__":
     print("Achtung: Allle Bilder im Ordner erhalten den gleichen Namen und das gleiche Aufnahmedatum!")
     modus:str = mode_selection()
