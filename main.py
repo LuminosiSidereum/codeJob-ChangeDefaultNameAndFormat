@@ -10,7 +10,10 @@ def mode_selection() -> str:
     """
     mode_selection: bool = True
     while mode_selection:
-        mode: str = input("Modus auswählen: 0 um Bild umbenennen; 1 um Aufnahmedatum des umbenannten Bildes ändern; 2 um Name des umbenannten Bildes zu ändern: ")
+        modelist: list[str] = ["0: Bild komplett neu benennen","1: Aufnahmedatum des umbenannten Bildes ändern","2: Name des umbenannten Bildes ändern"]
+        for i in modelist:
+            print(i)
+        mode: str = input("Modus auswählen: ")
         if mode in ["0", "1","2"]:
             mode_selection = False
         else:
