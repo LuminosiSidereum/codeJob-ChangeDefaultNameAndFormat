@@ -110,8 +110,7 @@ def picture_edit_name(name:str):
             file_name, file_extension = file.stem, file.suffix
             nameblocks:list[str] = file_name.split("-")
             file_name_proof(nameblocks)
-            nameblocks[0] = name
-            new_file_name:str = "-".join(nameblocks)+file_extension
+            new_file_name: str = name + nameblocks[-1] + file_extension
             file.rename(new_file_name)
             print(f"Umbenannt: {file} -> {new_file_name}")
 
