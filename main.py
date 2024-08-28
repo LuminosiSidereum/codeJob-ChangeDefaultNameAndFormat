@@ -58,8 +58,9 @@ def picture_rename(date:str, name:str):
     for os_file in os.listdir():
         file: Path = Path(os_file) 
         if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
-            new_name:str = name + "-" + date + "_" + str(count) + file.suffix
-            file.rename(new_name)
+            new_file_name:str = name + "-" + date + "_" + str(count) + file.suffix
+            file.rename(new_file_name)
+            print(f"Umbenannt: {file} -> {new_file_name}")
             count = count + 1
 
 def file_name_proof(nameblocks:list[str])->None:
@@ -91,6 +92,7 @@ def picture_edit_date(date:str):
             nameblocks[-1] = date
             new_file_name:str = "-".join(nameblocks)+ "_" + str(count) + file_extension
             file.rename(new_file_name)
+            print(f"Umbenannt: {file} -> {new_file_name}")
             count = count + 1
 
 def picture_edit_name(name:str):
@@ -108,6 +110,7 @@ def picture_edit_name(name:str):
             nameblocks[0] = name
             new_file_name:str = "-".join(nameblocks)+file_extension
             file.rename(new_file_name)
+            print(f"Umbenannt: {file} -> {new_file_name}")
 
 if __name__=="__main__":
     print("Achtung: Allle Bilder im Ordner erhalten den gleichen Namen und das gleiche Aufnahmedatum!")
