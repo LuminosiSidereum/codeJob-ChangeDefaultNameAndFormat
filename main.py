@@ -115,21 +115,23 @@ def picture_edit_name(name:str):
 if __name__=="__main__":
     print("Achtung: Allle Bilder im Ordner erhalten den gleichen Namen und das gleiche Aufnahmedatum!")
     modus:str = mode_selection()
-    date:str = date_input()
-    name:str = file_name_input()
 
     # Set storage directory of the python skript as current diretory
     script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
     os.chdir(script_dir)
     
     if modus == "0":
+        date:str = date_input()
+        name:str = file_name_input()
         picture_rename(date, name)
     if modus == "1":
+        date:str = date_input()
         try:
             picture_edit_date(date)
         except ValueError as e:
             print(e)
     if modus == "2":
+        name:str = file_name_input()
         try:
             picture_edit_name(name)
         except ValueError as e:
