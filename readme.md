@@ -8,6 +8,7 @@ Only the files ending with
 - jpeg
 - png
 - tif, tiff
+
 are renamed.
 
 The working directory is always set to the directory of the python script.
