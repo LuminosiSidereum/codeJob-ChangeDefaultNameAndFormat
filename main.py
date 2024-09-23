@@ -88,7 +88,7 @@ def picture_edit_date(date:str):
     count:int = 0
     for os_file in os.listdir():
         file: Path = Path(os_file)
-        if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
+        if file.suffix in [".jpg", ".jpeg", ".png", ".gif",".tif",".tiff", ".mov", ".mp4", ".avi"]:
             file_name, file_extension = file.stem, file.suffix
             nameblocks:list[str] = file_name.split("-")
             file_name_proof(nameblocks)
@@ -106,7 +106,7 @@ def picture_edit_name(name:str):
     """
     for os_file in os.listdir():
         file: Path = Path(os_file)
-        if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
+        if file.suffix in [".jpg", ".jpeg", ".png", ".gif",".tif",".tiff", ".mov", ".mp4", ".avi"]:
             file_name, file_extension = file.stem, file.suffix
             nameblocks:list[str] = file_name.split("-")
             file_name_proof(nameblocks)
@@ -123,19 +123,19 @@ if __name__=="__main__":
     os.chdir(script_dir)
     
     if modus == "0":
-        date:str = date_input()
-        name:str = file_name_input()
-        picture_rename(date, name)
+        date_0:str = date_input()
+        name_0:str = file_name_input()
+        picture_rename(date_0, name_0)
     if modus == "1":
-        date:str = date_input()
+        date_1:str = date_input()
         try:
-            picture_edit_date(date)
+            picture_edit_date(date_1)
         except ValueError as e:
             print(e)
     if modus == "2":
-        name:str = file_name_input()
+        name_2:str = file_name_input()
         try:
-            picture_edit_name(name)
+            picture_edit_name(name_2)
         except ValueError as e:
             print(e)
     input("Drücken Sie Enter zum Beenden...")
