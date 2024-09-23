@@ -60,7 +60,7 @@ def picture_rename(date:str, name:str):
     count:int = 0
     for os_file in os.listdir():
         file: Path = Path(os_file) 
-        if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
+        if file.suffix in [".jpg", ".jpeg", ".png", ".gif",".tif",".tiff"]:
             new_file_name:str = name + "-" + date + "_" + str(count) + file.suffix
             file.rename(new_file_name)
             print(f"Umbenannt: {file} -> {new_file_name}")
