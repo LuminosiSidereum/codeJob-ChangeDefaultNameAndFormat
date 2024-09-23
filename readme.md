@@ -15,4 +15,8 @@ Only the files ending with
 
 are renamed.
 
+Additionally the files in the heic format are converted into tiff format.
+The original heic files are not deleted.
+Instead they are moved into the subdircetory **"Orginaldateien (HEIC)"**.
+
 The working directory is always set to the directory of the python script.
