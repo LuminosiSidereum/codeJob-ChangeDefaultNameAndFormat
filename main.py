@@ -2,7 +2,10 @@ import os
 import sys
 from pathlib import Path
 
-
+accepted_file_extensions: dict[str,list[str]] ={
+    "picture":[".jpg", ".jpeg", ".png", ".gif",".tif",".tiff",".heic"],
+    "movies": [".mov", ".mp4", ".avi"]
+}
 
 forbidden_chars: list[str] = ["/", "\\", ":", "*", "?", "<", ">", "|", ".", "!", ";","#"]
 
@@ -68,8 +71,8 @@ def picture_rename(date:str, name:str):
     count:int = 0
     for os_file in os.listdir():
         file: Path = Path(os_file) 
-        if file.suffix in [".jpg", ".jpeg", ".png", ".gif",".tif",".tiff", ".mov", ".mp4", ".avi"]:
-            new_file_name:str = name + "-" + date + "_" + str(count) + file.suffix
+        if file.suffix.lower() in accepted_file_extensions["picture"] or file.suffix.lower() in accepted_file_extensions["movies"]:
+            new_file_name:str = name + "-" + date + "_" + str(count) + file.suffix.lower()
             file.rename(new_file_name)
             print(f"Umbenannt: {file} -> {new_file_name}")
             count = count + 1
@@ -96,8 +99,8 @@ def picture_edit_date(date:str):
     count:int = 0
     for os_file in os.listdir():
         file: Path = Path(os_file)
-        if file.suffix in [".jpg", ".jpeg", ".png", ".gif",".tif",".tiff", ".mov", ".mp4", ".avi"]:
-            file_name, file_extension = file.stem, file.suffix
+        if file.suffix.lower() in accepted_file_extensions["picture"] or file.suffix.lower() in accepted_file_extensions["movies"]:
+            file_name, file_extension = file.stem, file.suffix.lower()
             nameblocks:list[str] = file_name.split("-")
             file_name_proof(nameblocks)
             nameblocks[-1] = date
@@ -114,8 +117,8 @@ def picture_edit_name(name:str):
     """
     for os_file in os.listdir():
         file: Path = Path(os_file)
-        if file.suffix in [".jpg", ".jpeg", ".png", ".gif",".tif",".tiff", ".mov", ".mp4", ".avi"]:
-            file_name, file_extension = file.stem, file.suffix
+        if file.suffix.lower() in accepted_file_extensions["picture"] or file.suffix.lower() in accepted_file_extensions["movies"]:
+            file_name, file_extension = file.stem, file.suffix.lower()
             nameblocks:list[str] = file_name.split("-")
             file_name_proof(nameblocks)
             new_file_name: str = name + "-" + nameblocks[-1] + file_extension
