@@ -9,6 +9,9 @@ Only the files ending with
 - png
 - gif
 - tif, tiff
+- mov
+- mp4
+- avi
 
 are renamed.
 
