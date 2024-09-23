@@ -2,6 +2,10 @@ import os
 import sys
 from pathlib import Path
 
+
+
+forbidden_chars: list[str] = ["/", "\\", ":", "*", "?", "<", ">", "|", ".", "!", ";","#"]
+
 def mode_selection() -> str:
     """
     Prompts the user to select a mode.
@@ -14,6 +18,7 @@ def mode_selection() -> str:
         for i in modelist:
             print(i)
         mode: str = input("Modus auswählen: ")
+        mode = mode.strip()
         if mode in ["0", "1","2"]:
             mode_selection = False
         else:
@@ -29,6 +34,7 @@ def date_input() -> str:
     valid_date_input: bool = False
     while not valid_date_input:
         date: str = input("Aufnahmedatum der Bilder eingeben (Format: JJMMTT): ")
+        date = date.strip()
         if len(date) == 6 and date.isdigit():
             valid_date_input = True
         else:
@@ -44,10 +50,12 @@ def file_name_input() -> str:
     valid_file_name_input: bool = False
     while not valid_file_name_input:
         name: str = input("Projektidentifizierung eingeben: ")
-        if len(name) > 0:
-            valid_file_name_input = True
-        else:
+        name = name.strip()
+        if len(name) == 0 or any([char in name for char in forbidden_chars]):
             print("Ungültige Eingabe!")
+            print("Verwenden Sie keine der folgenden Zeichen: / \\ : * ? < > | . ! ; # und reservierte Dateinamen")
+        else:
+            valid_file_name_input = True
     return name
 
 def picture_rename(date:str, name:str):
