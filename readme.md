@@ -7,6 +7,7 @@ Only the files ending with
 - jpg
 - jpeg
 - png
+- gif
 - tif, tiff
 
 are renamed.
