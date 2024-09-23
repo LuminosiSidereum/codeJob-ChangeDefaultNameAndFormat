@@ -88,7 +88,7 @@ def picture_edit_date(date:str):
     count:int = 0
     for os_file in os.listdir():
         file: Path = Path(os_file)
-        if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
+        if file.suffix in [".jpg", ".jpeg", ".png", ".gif",".tif",".tiff", ".mov", ".mp4", ".avi"]:
             file_name, file_extension = file.stem, file.suffix
             nameblocks:list[str] = file_name.split("-")
             file_name_proof(nameblocks)
@@ -106,7 +106,7 @@ def picture_edit_name(name:str):
     """
     for os_file in os.listdir():
         file: Path = Path(os_file)
-        if file.suffix in [".jpg", ".jpeg", ".png", ".gif","tiff"]:
+        if file.suffix in [".jpg", ".jpeg", ".png", ".gif",".tif",".tiff", ".mov", ".mp4", ".avi"]:
             file_name, file_extension = file.stem, file.suffix
             nameblocks:list[str] = file_name.split("-")
             file_name_proof(nameblocks)
