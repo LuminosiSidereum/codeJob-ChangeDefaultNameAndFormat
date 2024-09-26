@@ -1,1 +1,1 @@
-python pip install pillow-heif
+python -m pip install pillow-heif

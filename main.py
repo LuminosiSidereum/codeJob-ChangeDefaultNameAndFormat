@@ -3,8 +3,15 @@ import sys
 from pathlib import Path
 import shutil
 from PIL import Image
-import pillow_heif
 
+try:
+    import pillow_heif
+except ImportError:
+    print("Das Modul pillow_heif ist nicht installiert.")
+    print("Bitte installieren Sie das Modul mit 'Ausführen.bat' oder 'python -m pip install pillow-heif' im Terminal.")
+    input("Drücken Sie Enter zum Beenden...")
+    sys.exit()
+    
 accepted_file_extensions: dict[str,list[str]] ={
     "picture":[".jpg", ".jpeg", ".png", ".gif",".tif",".tiff",".heic"],
     "movies": [".mov", ".mp4", ".avi"]
