@@ -2,10 +2,10 @@ import os
 import sys
 from pathlib import Path
 import shutil
-from PIL import Image
+from PIL import Image #type: ignore
 
 try:
-    import pillow_heif
+    import pillow_heif #type: ignore
 except ImportError:
     print("Das Modul pillow_heif ist nicht installiert.")
     print("Bitte installieren Sie das Modul mit 'Ausführen.bat' oder 'python -m pip install pillow-heif' im Terminal.")
