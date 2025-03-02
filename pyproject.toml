@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "image-file-manager"
+version = "0.1.0"
+description = "Ein Skript zur Verwaltung und Umbenennung von Bildern und Videos."
+authors = ["Phillipp Schultheiß <phillipp-schulthiss@web.de>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pillow = "^10.0"
+pillow-heif = "^0.14"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
